@@ -64,7 +64,10 @@ class _ProfilePageState extends State<ProfilePage> {
       padding: const EdgeInsets.all(20),
       child: Column(
         children: [
-          const CircleAvatar(radius: 60, child: Icon(Icons.person, size: 65)),
+          const CircleAvatar(
+            radius: 60, 
+            backgroundImage: AssetImage('assets/images/profile.png'),
+          ),
 
           const SizedBox(height: 16),
 

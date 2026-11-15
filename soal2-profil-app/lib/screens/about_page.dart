@@ -31,7 +31,7 @@ class AboutPage extends StatelessWidget {
                 children: [
                   const CircleAvatar(
                     radius: 55,
-                    child: Icon(Icons.person, size: 60),
+                    backgroundImage: AssetImage('assets/images/profile.png'),
                   ),
                   const SizedBox(height: 16),
                   Text(
