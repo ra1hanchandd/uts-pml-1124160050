@@ -6,8 +6,25 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  // Status tema aplikasi
+  ThemeMode _themeMode = ThemeMode.system;
+
+  // Fungsi untuk mengganti tema
+  void _toggleTheme() {
+    setState(() {
+      _themeMode = _themeMode == ThemeMode.light
+          ? ThemeMode.dark
+          : ThemeMode.light;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +50,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      // Mengikuti tema sistem perangkat
-      themeMode: ThemeMode.system,
+      themeMode: _themeMode,
 
-      // Halaman pertama aplikasi
-      home: const LoginPage(),
+      // Mengirim fungsi pengubah tema ke halaman login
+      home: LoginPage(onToggleTheme: _toggleTheme),
     );
   }
 }
