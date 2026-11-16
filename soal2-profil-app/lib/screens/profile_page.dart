@@ -7,7 +7,7 @@ import 'about_page.dart';
 class ProfilePage extends StatefulWidget {
   final Profile profile;
   final VoidCallback onToggleTheme;
-  
+
   const ProfilePage({
     super.key,
     required this.profile,
@@ -49,7 +49,7 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
-  // Menampilkan halaman berdasarkan menu yang dipilih
+  // Mengatur perpindahan halaman
   Widget _buildPage() {
     if (_selectedIndex == 0) {
       return _buildProfileContent();
@@ -65,7 +65,7 @@ class _ProfilePageState extends State<ProfilePage> {
       child: Column(
         children: [
           const CircleAvatar(
-            radius: 60, 
+            radius: 60,
             backgroundImage: AssetImage('assets/images/profile.png'),
           ),
 
@@ -144,17 +144,85 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
+  // Drawer Navigation
+  Widget _buildDrawer() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          UserAccountsDrawerHeader(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            accountName: Text(currentProfile.nama),
+            accountEmail: Text(currentProfile.nim),
+            currentAccountPicture: const CircleAvatar(
+              backgroundImage: AssetImage('assets/images/profile.png'),
+            ),
+          ),
+
+          ListTile(
+            leading: const Icon(Icons.person),
+            title: const Text('Profil Mahasiswa'),
+            selected: _selectedIndex == 0,
+            onTap: () {
+              setState(() {
+                _selectedIndex = 0;
+              });
+              Navigator.pop(context);
+            },
+          ),
+
+          ListTile(
+            leading: const Icon(Icons.info),
+            title: const Text('About Me'),
+            selected: _selectedIndex == 1,
+            onTap: () {
+              setState(() {
+                _selectedIndex = 1;
+              });
+              Navigator.pop(context);
+            },
+          ),
+
+          const Divider(),
+
+          ListTile(
+            leading: const Icon(Icons.edit),
+            title: const Text('Edit Profil'),
+            onTap: () {
+              Navigator.pop(context);
+              _editProfile();
+            },
+          ),
+
+          ListTile(
+            leading: const Icon(Icons.brightness_6),
+            title: const Text('Ganti Tema'),
+            onTap: () {
+              Navigator.pop(context);
+              widget.onToggleTheme();
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: _buildDrawer(),
+
       appBar: AppBar(
         title: Text(_selectedIndex == 0 ? 'Profil Mahasiswa' : 'About Me'),
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: widget.onToggleTheme, 
+            onPressed: widget.onToggleTheme,
             icon: const Icon(Icons.brightness_6),
-            tooltip: 'Ganti Tema'),
+            tooltip: 'Ganti Tema',
+          ),
         ],
       ),
 
