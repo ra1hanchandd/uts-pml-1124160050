@@ -64,6 +64,13 @@ Aplikasi profil mahasiswa berbasis Flutter yang dibuat untuk memenuhi tugas Ujia
 
 [Klik di sini untuk menonton video presentasi UTS](https://youtu.be/ra-hJDKFADc)
 
+## Akun Demo
+
+Gunakan akun berikut untuk mencoba aplikasi:
+
+- NIM: 1124160050
+- Password: raihan123
+
 ## Repository
 
 [GitHub - UTS PML 1124160050](https://github.com/ra1hanchandd/uts-pml-1124160050)
