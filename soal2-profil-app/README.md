@@ -62,7 +62,7 @@ Aplikasi profil mahasiswa berbasis Flutter yang dibuat untuk memenuhi tugas Ujia
 
 ## Video Demo
 
-Link YouTube: **[Masukkan link video demo di sini]**
+[Klik di sini untuk menonton video presentasi UTS](https://youtu.be/ra-hJDKFADc)
 
 ## Repository
 
